@@ -1,0 +1,79 @@
+$background-color: #EEEEEE;
+$near-black: #212121;
+$header-color: #f44336;
+
+$primary-font: 'Open Sans', sans-serif;
+$secondary-font: 'Merriweather', serif;
+
+$light-shadow: 0.5px 1px 3px 1px rgba(0,0,0,0.1);
+
+$note-padding: 2rem;
+
+body{
+	background-color: $background-color;
+	color: $near-black;
+	font-family: $primary-font;
+	margin: 0;
+}
+
+h1, h2, h3{
+	font-family: $secondary-font;
+	margin-top: 0;
+}
+
+header{
+	background-color: $header-color;
+	color: white;
+	padding: 1em 2em;
+
+	h1{
+		margin: 0;
+		font-family: $primary-font;
+		font-weight: bold;
+		font-size: 1.5rem;
+	}
+}
+
+.note-area{
+	padding: 3em;
+	max-width: 40em;
+	margin: 0 auto;
+}
+
+.note-creator{
+	background-color: white;
+	box-shadow: $light-shadow;
+	position: relative;
+	margin-bottom: 1em;
+}
+
+.note-text-area{
+	padding: $note-padding;
+}
+
+.done-button{
+	font-family: $primary-font;
+	font-weight: bold;
+	font-size: 0.7em;
+	background: none;
+	appearance: none;
+	border: none;
+	padding: 0.25em 1em;
+	color: fade-out(black, 0.4);
+	cursor: pointer;
+	text-transform: uppercase;
+	position: absolute;
+	right: 1em;
+	bottom: 1em;
+	border-radius: 0.5em;
+	transition: all 0.2s;
+
+	&:hover{
+		color: fade-out(black, 0.2);
+		background-color: fade-out(black, 0.9);
+	}
+
+	&:focus{
+		outline: none;
+	}
+}
