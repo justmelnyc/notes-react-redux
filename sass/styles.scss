@@ -1,6 +1,7 @@
 $background-color: #EEEEEE;
 $near-black: #212121;
 $header-color: #f44336;
+$mid-grey: #AAA;
 
 $primary-font: 'Open Sans', sans-serif;
 $secondary-font: 'Merriweather', serif;
@@ -49,6 +50,14 @@ header{
 
 .note-text-area{
 	padding: $note-padding;
+}
+
+.note-placeholder{
+	color: $mid-grey;
+	padding: $note-padding;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 
 .done-button{

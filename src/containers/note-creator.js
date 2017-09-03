@@ -33,6 +33,9 @@ class NoteCreator extends Component {
           html={this.state.noteContents}
           onChange={this.onInputChange}
         />
+        {this.state.noteContents === '' &&
+          <div className="note-placeholder">New note...</div>
+        }
         {this.state.noteContents !== '' &&
           <button className="done-button"
             type="button"
