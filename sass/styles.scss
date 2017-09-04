@@ -41,7 +41,7 @@ header{
 	margin: 0 auto;
 }
 
-.note-creator{
+.note-creator, .note{
 	background-color: white;
 	box-shadow: $light-shadow;
 	position: relative;
@@ -58,6 +58,26 @@ header{
 	position: absolute;
 	left: 0;
 	top: 0;
+	user-select: none;
+	pointer-events: none;
+}
+
+.note-controls{
+	position: absolute;
+	right: 1rem;
+	bottom: 0.5rem;
+	text-align: right;
+}
+
+.note-last-edited{
+	color: $mid-grey;
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	user-select: none;
+	pointer-events: none;
+	font-size: 0.7em;
+	font-style: italic;
 }
 
 .done-button{
@@ -71,11 +91,10 @@ header{
 	color: fade-out(black, 0.4);
 	cursor: pointer;
 	text-transform: uppercase;
-	position: absolute;
-	right: 1em;
-	bottom: 1em;
 	border-radius: 0.5em;
 	transition: all 0.2s;
+	display: inline-block;
+	margin-left: 3px;
 
 	&:hover{
 		color: fade-out(black, 0.2);
@@ -84,5 +103,40 @@ header{
 
 	&:focus{
 		outline: none;
+	}
+}
+
+.color-selector{
+	position: relative;
+	display: inline-block;
+}
+
+.color-selector-drawer{
+	position: absolute;
+	width: 7em;
+	text-align: center;
+	background-color: white;
+	padding: 0.5em 0.25em;
+	box-shadow: $light-shadow;
+	opacity: 0;
+	z-index: 1;
+
+	&.open{
+		opacity: 1;
+	}
+}
+
+.color-selector-button{
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	display: inline-block;
+	border: none;
+	margin: 2px;
+	cursor: pointer;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+
+	&:hover, &.selected{
+		box-shadow: 0 0 0 1px #2196F3;
 	}
 }

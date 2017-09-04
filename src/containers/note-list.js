@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Note from './note';
 
 class NoteList extends Component { 
-  renderNote(note) {
-    return(
-      <div className="note-creator">
-        <div className="note-text-area" 
-          dangerouslySetInnerHTML={{__html: note}} >
-        </div>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="noteList">
-        {this.props.notes.map(this.renderNote)}
+        {this.props.notes.map( (noteData) => <Note key={noteData.id} id={noteData.id}></Note> )}
       </div>
     );
   }
 }
 
-function mapStateToProps( notes ) {
-  return { notes };
+function mapStateToProps( state ) {
+  return { notes: state };
 }
 
 export default connect(mapStateToProps)(NoteList);

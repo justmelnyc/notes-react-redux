@@ -37,9 +37,11 @@ class NoteCreator extends Component {
           <div className="note-placeholder">New note...</div>
         }
         {this.state.noteContents !== '' &&
-          <button className="done-button"
-            type="button"
-            onClick={this.onDone}>Done</button>
+          <div className="note-controls">
+            <button className="done-button"
+              type="button"
+              onClick={this.onDone}>Done</button>
+          </div>
         }
       </div>
     );
