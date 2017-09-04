@@ -1,7 +1,7 @@
 $background-color: #EEEEEE;
-$near-black: #212121;
+$near-black: rgba(0,0,0,0.7);
 $header-color: #f44336;
-$mid-grey: #AAA;
+$mid-grey: rgba(0,0,0,0.4);
 
 $primary-font: 'Open Sans', sans-serif;
 $secondary-font: 'Merriweather', serif;
@@ -48,6 +48,14 @@ header{
 	margin-bottom: 1em;
 }
 
+.note-header{
+	display: block;
+	width: 100%;
+	height: 20px;
+	background-color: rgba(0,0,0,0.03);
+	cursor: move;
+}
+
 .note-text-area{
 	padding: $note-padding;
 }
@@ -72,7 +80,7 @@ header{
 .note-last-edited{
 	color: $mid-grey;
 	position: absolute;
-	top: 0.5rem;
+	top: 3px;
 	right: 1rem;
 	user-select: none;
 	pointer-events: none;

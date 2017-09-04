@@ -12,13 +12,19 @@ class Note extends Component {
     super(props);
 
     this.state = {
-      hasFocus: false
+      hasFocus: false,
+      dragging: false,
+      offset: [0,0],
+      dragOrigin: [0,0],
     };
 
     this.onFocus = this.onFocus.bind(this);
     this.onBlur = this.onBlur.bind(this);
     this.onDone = this.onDone.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onDragStart = this.onDragStart.bind(this);
+    this.onDrag = this.onDrag.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
 
@@ -51,13 +57,51 @@ class Note extends Component {
     this.props.editNote(this.props.noteData);
   }
 
+  onDragStart(e) {
+    this.setState(
+      {
+        dragging: true,
+        offset: [0,0],
+        dragOrigin: [e.clientX, e.clientY],
+      }
+    );
+  }
+
+  onDrag(e) {
+    if(this.state.dragging){
+      this.setState(
+        {
+          offset: [
+            e.clientX - this.state.dragOrigin[0],
+            e.clientY - this.state.dragOrigin[1]
+          ]
+        }
+      );
+      console.log(this.state.offset);
+    }
+  }
+
+  onDragEnd(e) {
+    this.setState(
+      {
+        dragging: false,
+        delta: [0,0],
+        dragOrigin: [0,0],
+      }
+    );
+  }
+
   render() {
     return (
       <div 
         className="note" 
         onBlur={this.onBlur}
+        onMouseDown={ this.onDragStart }
+        onMouseMove={ this.onDrag }
+        onMouseUp={ this.onDragEnd }
         style={{backgroundColor: this.props.noteData.backgroundColor}}
       >
+        <div className="note-header" />
         <ContentEditable 
           className="note-text-area"
           html={this.props.noteData.html}

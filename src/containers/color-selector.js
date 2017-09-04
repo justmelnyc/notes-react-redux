@@ -9,7 +9,6 @@ class ColorSelector extends Component {
     super(props);
 
     this.state = {
-      selectedColor: props.selectedColor,
       drawerOpen: false
     };
 
@@ -30,7 +29,7 @@ class ColorSelector extends Component {
   }
 
   renderColorButton(color) {
-    const isSelected = color.hexVal === this.state.selectedColor;
+    const isSelected = color.hexVal === this.props.selectedColor;
     return (
       <button 
         className={"color-selector-button " + (isSelected ? 'selected' : '')}
