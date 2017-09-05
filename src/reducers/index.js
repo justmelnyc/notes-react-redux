@@ -15,7 +15,9 @@ export default function(state = [], action) {
 				}
 			});
 		case DELETE_NOTE:
-			return R.remove(getNoteIndex(state, action.payload), 1, state);
+			return state.filter( (note) => {
+				return action.payload !== note.id;
+			});
 		case CHANGE_NOTE_COLOR:
 			return state.map( (note, index) => {
 				if(note.id !== action.payload.id){

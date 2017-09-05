@@ -28,6 +28,11 @@ class Note extends Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
+  componentDidMount() {
+    window.addEventListener('mousemove', this.onDrag);
+    window.addEventListener('mouseup', this.onDragEnd);
+  }
+
   onFocus() {
     this.setState({hasFocus: true});
   }
@@ -77,7 +82,6 @@ class Note extends Component {
           ]
         }
       );
-      console.log(this.state.offset);
     }
   }
 
@@ -85,7 +89,7 @@ class Note extends Component {
     this.setState(
       {
         dragging: false,
-        delta: [0,0],
+        offset: [0,0],
         dragOrigin: [0,0],
       }
     );
@@ -94,14 +98,16 @@ class Note extends Component {
   render() {
     return (
       <div 
-        className="note" 
+        className={"note " + ( this.state.hasFocus ? 'focussed' : '' ) }
         onBlur={this.onBlur}
-        onMouseDown={ this.onDragStart }
-        onMouseMove={ this.onDrag }
-        onMouseUp={ this.onDragEnd }
-        style={{backgroundColor: this.props.noteData.backgroundColor}}
+        style={
+          {
+            backgroundColor: this.props.noteData.backgroundColor,
+            transform: `translate( ${this.state.offset[0]}px, ${this.state.offset[1]}px)`
+          }
+        }
       >
-        <div className="note-header" />
+        <div className="note-header" onMouseDown={ this.onDragStart } />
         <ContentEditable 
           className="note-text-area"
           html={this.props.noteData.html}

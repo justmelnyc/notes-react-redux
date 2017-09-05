@@ -12,7 +12,7 @@ export default class App extends Component {
         </header>
         <section className="note-area">
           <NoteCreator />
-                <NoteList />
+          <NoteList />
         </section>
       </main>
     );

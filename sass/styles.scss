@@ -7,6 +7,7 @@ $primary-font: 'Open Sans', sans-serif;
 $secondary-font: 'Merriweather', serif;
 
 $light-shadow: 0.5px 1px 3px 1px rgba(0,0,0,0.1);
+$dark-shadow: 0.5px 1px 10px 0 rgba(0,0,0,0.3);
 
 $note-padding: 2rem;
 
@@ -46,6 +47,11 @@ header{
 	box-shadow: $light-shadow;
 	position: relative;
 	margin-bottom: 1em;
+	transition: box-shadow 0.2s ease-in-out;
+
+	&.focussed{
+		box-shadow: $dark-shadow;
+	}
 }
 
 .note-header{
@@ -58,6 +64,10 @@ header{
 
 .note-text-area{
 	padding: $note-padding;
+
+	&:focus{
+		outline: none;
+	}
 }
 
 .note-placeholder{
