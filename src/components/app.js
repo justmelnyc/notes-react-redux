@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import NoteCreator from '../containers/note-creator';
-import NoteList from '../containers/note-list';
+import { NoteCreator } from '.';
+import { NoteList } from '.';
 
 export default class App extends Component {
   render() {
